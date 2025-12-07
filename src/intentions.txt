@@ -1,0 +1,24 @@
+intentions = """{"id": 1, "text": "I am running QuickPay for Emp001 for the month of May, no retro.", "parsed_hint": {"period": "May", "payroll_type": "QuickPay", "retro": "off", "person": "Emp001"}}
+{"id": 2, "text": "Quick single run for Emp002 for April. Keep retro disabled.", "parsed_hint": {"period": "Apr", "payroll_type": "QuickPay", "retro": "off", "person": "Emp002"}}
+{"id": 3, "text": "Run regular payroll for Emp003 for May and let retro apply.", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "on", "person": "Emp003"}}
+{"id": 4, "text": "Off-cycle payout for Emp001 for March, retro off.", "parsed_hint": {"period": "Mar", "payroll_type": "OffCycle", "retro": "off", "person": "Emp001"}}
+{"id": 5, "text": "I want corrective payroll for Emp004 for May with retro ON.", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "on", "person": "Emp004"}}
+{"id": 6, "text": "Process May QuickPay for Emp003, strictly no retro.", "parsed_hint": {"period": "May", "payroll_type": "QuickPay", "retro": "off", "person": "Emp003"}}
+{"id": 7, "text": "Batch payroll for all, but let's test with Emp001 for April.", "parsed_hint": {"period": "Apr", "payroll_type": "Batch", "retro": "off", "person": "Emp001"}}
+{"id": 8, "text": "Run May payroll for Emp002, retro should be considered.", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "on", "person": "Emp002"}}
+{"id": 9, "text": "I am trying to re-run the May payroll for Emp003, no retro.", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "off", "person": "Emp003"}}
+{"id": 10, "text": "Do a QuickPay for Emp004 for February.", "parsed_hint": {"period": "Feb", "payroll_type": "QuickPay", "retro": "off", "person": "Emp004"}}
+{"id": 11, "text": "I want to calculate June payroll for Emp001 and allow retro.", "parsed_hint": {"period": "Jun", "payroll_type": "Regular", "retro": "on", "person": "Emp001"}}
+{"id": 12, "text": "May QuickPay for Emp002, retro off, straight calculate.", "parsed_hint": {"period": "May", "payroll_type": "QuickPay", "retro": "off", "person": "Emp002"}}
+{"id": 13, "text": "Run review-only May payroll for Emp003 (no recalculation).", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "off", "person": "Emp003"}}
+{"id": 14, "text": "April QuickPay for Emp001, retro off.", "parsed_hint": {"period": "Apr", "payroll_type": "QuickPay", "retro": "off", "person": "Emp001"}}
+{"id": 15, "text": "Off-cycle May payment for Emp002 with retro ON.", "parsed_hint": {"period": "May", "payroll_type": "OffCycle", "retro": "on", "person": "Emp002"}}
+{"id": 16, "text": "I want to run payroll for Emp004 for May but turn retro off.", "parsed_hint": {"period": "May", "payroll_type": "Regular", "retro": "off", "person": "Emp004"}}
+{"id": 17, "text": "Recalculate March QuickPay for Emp003.", "parsed_hint": {"period": "Mar", "payroll_type": "QuickPay", "retro": "off", "person": "Emp003"}}
+{"id": 18, "text": "Process May run for Emp001 as Batch, no retro.", "parsed_hint": {"period": "May", "payroll_type": "Batch", "retro": "off", "person": "Emp001"}}
+{"id": 19, "text": "Run April payroll for Emp002 and allow retro.", "parsed_hint": {"period": "Apr", "payroll_type": "Regular", "retro": "on", "person": "Emp002"}}
+{"id": 20, "text": "May QuickPay for Emp001 with retro OFF and immediate calculate.", "parsed_hint": {"period": "May", "payroll_type": "QuickPay", "retro": "off", "person": "Emp001"}}
+"""
+with open("intentions.jsonl", "w") as f:
+    f.write(intentions.strip()+"\n")
+print("intentions.jsonl written")

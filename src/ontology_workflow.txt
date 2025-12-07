@@ -1,0 +1,48 @@
+ontology_json = """
+{
+  "ontology": {
+    "agent": ["user", "system"],
+    "period": ["Jan","Feb","Mar","Apr","May","Jun","Jul","Aug","Sep","Oct","Nov","Dec"],
+    "payroll_type": ["QuickPay", "Regular", "Batch", "OffCycle"],
+    "retro": ["on", "off"],
+    "person": ["Emp001", "Emp002", "Emp003", "Emp004"],
+    "payroll_flow": ["SingleRun", "CorrectiveRun", "RetroAdjustment"],
+    "errors": ["NONE", "PERIOD_MISMATCH", "RETRO_MISMATCH", "MISSING_PERSON"]
+  },
+  "epistemic_thresholds": {
+    "might": 0.20,
+    "likely": 0.70,
+    "believes": 0.75,
+    "must": 0.95
+  },
+  "workflow": {
+    "stages": [
+      "Navigate",
+      "SelectPerson",
+      "SetPeriod",
+      "ConfigureRetro",
+      "SetPayrollType",
+      "Calculate",
+      "Review"
+    ],
+    "transitions": {
+      "Navigate": ["SelectPerson"],
+      "SelectPerson": ["SetPeriod", "SetPayrollType"],
+      "SetPeriod": ["ConfigureRetro", "Calculate"],
+      "ConfigureRetro": ["Calculate"],
+      "SetPayrollType": ["SetPeriod", "ConfigureRetro", "Calculate"],
+      "Calculate": ["Review"],
+      "Review": []
+    },
+    "guarded_actions": {
+      "Calculate": {
+        "required": ["period", "person", "payroll_type"],
+        "optional": ["retro"]
+      }
+    }
+  }
+}
+"""
+with open("ontology_workflow.json", "w") as f:
+    f.write(ontology_json.strip())
+print("ontology_workflow.json written")
