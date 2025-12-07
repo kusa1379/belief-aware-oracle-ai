@@ -6,7 +6,31 @@ from src.belief_store import (init_belief_state, update_from_elot,
                           belief_to_epistemic_messages)
 from src.epistemic_parser import parse_to_elot
 
-os.environ["OPENAI_API_KEY"] = "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" # my API Key 
+def get_api_key():
+    key = os.getenv("OPENAI_API_KEY")
+
+    if key is None or len(key.strip()) < 20:
+        print("\n No valid OpenAI API key detected.")
+        print("If you want to use the real LLM, please paste your API key now.")
+        print("Otherwise, just press ENTER to continue with MOCK LLM.\n")
+
+        user_key = input(" Paste your OpenAI API key (or press Enter to skip): ").strip()
+
+        if len(user_key) < 20:
+            print("\n Proceeding with MOCK LLM mode (no API key).\n")
+            return None
+
+        # save key for current runtime
+        os.environ["OPENAI_API_KEY"] = user_key
+        print("\n API key saved. Using REAL OpenAI LLM.\n")
+        return user_key
+
+    print ("\n Using previously configured OpenAI API key.")
+    return key
+
+
+API_KEY = get_api_key()
+ 
 # init client (will use the key from Cell 2)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
