@@ -6,6 +6,7 @@ from src.belief_store import (init_belief_state, update_from_elot,
                           belief_to_epistemic_messages)
 from src.epistemic_parser import parse_to_elot
 
+os.environ["OPENAI_API_KEY"] = "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" # my API Key 
 # init client (will use the key from Cell 2)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
 
@@ -48,4 +49,5 @@ class OracleEpistemicCopilot:
         )
 
         return real_llm(system_prompt, user_text), epi_msgs
+
 
