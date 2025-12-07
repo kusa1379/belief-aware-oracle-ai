@@ -1,10 +1,10 @@
 import os
 from openai import OpenAI
 from typing import List, Dict, Any, Optional
-from belief_store import (init_belief_state, update_from_elot,
+from src.belief_store import (init_belief_state, update_from_elot,
                           update_from_action_log, detect_mismatches,
                           belief_to_epistemic_messages)
-from epistemic_parser import parse_to_elot
+from src.epistemic_parser import parse_to_elot
 
 # init client (will use the key from Cell 2)
 client = OpenAI(api_key=os.getenv("OPENAI_API_KEY"))
@@ -48,3 +48,4 @@ class OracleEpistemicCopilot:
         )
 
         return real_llm(system_prompt, user_text), epi_msgs
+
